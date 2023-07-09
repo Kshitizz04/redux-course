@@ -1,8 +1,8 @@
 import react,{useState} from "react"
-import { Connect } from "react-redux"
+import { connect } from "react-redux"
 import { createTodo } from "./actions"
 
-const NewTodoForm = (todos,onCreatePressed)=>{
+const NewTodoForm = ({todos,onCreatePressed})=>{
     const [inputValue,setInputValue] = useState("")
     
     return(

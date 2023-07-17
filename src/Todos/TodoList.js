@@ -2,8 +2,8 @@ import react, { useEffect } from "react"
 import TodoListItem from "./TodoListItem.js"
 import NewTodoForm from "./NewTodoForm.js"
 import { connect } from "react-redux"
-import { completeTodo, removeTodo } from "./actions.js"
 import { completeTodoRequest, displayAlert, loadTodos, removeTodoRequest } from "./thunks.js"
+import { getTodos, getTodosLoading } from "./selectors.js"
 
 const TodoList = ({todos=[],onRemovePressed,onCompletePressed,isLoading,startLoadingTodos})=>{
 
@@ -34,7 +34,7 @@ const TodoList = ({todos=[],onRemovePressed,onCompletePressed,isLoading,startLoa
 }
 const mapStateToProps=(state)=>{
     return(
-        {todos:state.todos,isLoading:state.isLoading}
+        {todos:getTodos(state),isLoading:getTodosLoading(state)}
     )
 }
 

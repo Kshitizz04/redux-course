@@ -1,6 +1,7 @@
 import react,{useState} from "react"
 import { connect } from "react-redux"
 import { addTodoRequest } from "./thunks"
+import { getTodos } from "./selectors"
 
 const NewTodoForm = ({todos,onCreatePressed})=>{
     const [inputValue,setInputValue] = useState("")
@@ -37,7 +38,7 @@ const NewTodoForm = ({todos,onCreatePressed})=>{
 const mapStateToProps = (state)=>{
     return(
         {
-            todos: state.todos,
+            todos: getTodos(state),
         }
     )
 }

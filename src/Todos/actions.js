@@ -19,11 +19,11 @@ export const removeTodo=todo=>({
     payload:{todo}
 })
 
-export const completeTodo = (text)=>{
+export const completeTodo = (todo)=>{
     return(
         {
             type: COMPLETE_TODO,
-            payload:{text},
+            payload:{todo},
         }
     )
 }

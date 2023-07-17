@@ -3,7 +3,7 @@ import TodoListItem from "./TodoListItem.js"
 import NewTodoForm from "./NewTodoForm.js"
 import { connect } from "react-redux"
 import { completeTodo, removeTodo } from "./actions.js"
-import { displayAlert, loadTodos, removeTodoRequest } from "./thunks.js"
+import { completeTodoRequest, displayAlert, loadTodos, removeTodoRequest } from "./thunks.js"
 
 const TodoList = ({todos=[],onRemovePressed,onCompletePressed,isLoading,startLoadingTodos})=>{
 
@@ -42,7 +42,7 @@ const mapDispatchToProps=(dispatch)=>{
     return(
         {
             onRemovePressed:(id)=>{dispatch(removeTodoRequest(id))},
-            onCompletePressed:(text)=>{dispatch(completeTodo(text))},
+            onCompletePressed:(id)=>{dispatch(completeTodoRequest(id))},
             startLoadingTodos:()=>{dispatch(loadTodos())},
         }
     )

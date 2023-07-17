@@ -1,12 +1,21 @@
-import react from "react"
+import react, { useEffect } from "react"
 import TodoListItem from "./TodoListItem.js"
 import NewTodoForm from "./NewTodoForm.js"
 import { connect } from "react-redux"
 import { completeTodo, removeTodo } from "./actions.js"
+import { displayAlert, loadTodos, removeTodoRequest } from "./thunks.js"
 
-const TodoList = ({todos=[],onRemovePressed,onCompletePressed})=>{
+const TodoList = ({todos=[],onRemovePressed,onCompletePressed,isLoading,startLoadingTodos})=>{
+
     console.log("todos",todos)
-    return(
+
+    useEffect(()=>{
+        startLoadingTodos();
+    },[])
+
+    const loadingMessage = 
+        <div>Loading todos...</div>;
+    const  content =
         <div className="list-wrapper">
             <NewTodoForm/>
             {todos.map((todo)=>{
@@ -19,19 +28,22 @@ const TodoList = ({todos=[],onRemovePressed,onCompletePressed})=>{
                 )
             })}
         </div>
+    return(
+        isLoading ? loadingMessage : content
     )
 }
 const mapStateToProps=(state)=>{
     return(
-        {todos:state.todos,}
+        {todos:state.todos,isLoading:state.isLoading}
     )
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return(
         {
-            onRemovePressed:(text)=>{dispatch(removeTodo(text))},
-            onCompletePressed:(text)=>{dispatch(completeTodo(text))}
+            onRemovePressed:(id)=>{dispatch(removeTodoRequest(id))},
+            onCompletePressed:(text)=>{dispatch(completeTodo(text))},
+            startLoadingTodos:()=>{dispatch(loadTodos())},
         }
     )
 }

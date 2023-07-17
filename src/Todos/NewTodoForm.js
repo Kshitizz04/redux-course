@@ -1,6 +1,6 @@
 import react,{useState} from "react"
 import { connect } from "react-redux"
-import { createTodo } from "./actions"
+import { addTodoRequest } from "./thunks"
 
 const NewTodoForm = ({todos,onCreatePressed})=>{
     const [inputValue,setInputValue] = useState("")
@@ -45,7 +45,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
     return(
         {
-            onCreatePressed:(text)=>{dispatch(createTodo(text))}
+            onCreatePressed:(text)=>{dispatch(addTodoRequest(text))}
         }
     )
 }

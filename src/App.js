@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
-import './App.css';
-import TodoList from './Todos/TodoList';
+import TodoList from './Todos/TodoList.js';
 
 const AppContainer = styled.div`
     margin: 1rem;

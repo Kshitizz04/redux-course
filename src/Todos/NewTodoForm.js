@@ -1,7 +1,7 @@
 import react,{useState} from "react"
 import { connect } from "react-redux"
-import { addTodoRequest } from "./thunks"
-import { getTodos } from "./selectors"
+import { addTodoRequest } from "./thunks.js"
+import { getTodos } from "./selectors.js"
 import { styled } from "styled-components"
 
 const FormContainer = styled.div`

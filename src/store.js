@@ -1,5 +1,5 @@
 import {createStore,combineReducers, applyMiddleware} from "redux";
-import { todos } from "./Todos/reducers";
+import { todos } from "./Todos/reducers.js";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
